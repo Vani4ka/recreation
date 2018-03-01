@@ -1,0 +1,11 @@
+Started on 2018-02-19 16:10
+Finished on 2018-02-19 16:12
+Execution time 0:02:01.719093
+
+best found feature subset / model parameters for 6-folded CV with 3 gamma values and 1 nu values:
+gamma                    : 0.5
+nu                       : 0.001
+feature subset           : ('packets', 'octets', 'duration', 'srcport', 'dstport', 'tcpflags', 'protocol')
+grid search results      : 85.0577731092% false alarm rate, 0.462472475751% miss rate
+
+

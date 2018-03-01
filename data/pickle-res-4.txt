@@ -1,0 +1,44 @@
+Started on 2018-02-16 17:45
+Finished on 2018-02-16 17:45
+Execution time 0:00:04.071552
+
+best found feature subset / model parameters for 4-folded CV with 3 gamma values and 1 nu values:
+gamma                    : 0.1
+nu                       : 0.001
+feature subset           : ('duration', 'srcport')
+grid search results      : 93.3991683992% false alarm rate, 0.170648464164% miss rate
+
+
+Started on 2018-02-16 17:48
+Finished on 2018-02-16 17:48
+Execution time 0:00:04.069498
+
+best found feature subset / model parameters for 4-folded CV with 3 gamma values and 1 nu values:
+gamma                    : 0.5
+nu                       : 0.001
+feature subset           : ('duration', 'tcpflags')
+grid search results      : 96.8295218295% false alarm rate, 0.105014439485% miss rate
+
+
+Started on 2018-02-16 18:05
+Finished on 2018-02-16 18:05
+Execution time 0:00:04.941765
+
+best found feature subset / model parameters for 4-folded CV with 3 gamma values and 1 nu values:
+gamma                    : 0.1
+nu                       : 0.001
+feature subset           : ('protocol',)
+grid search results      : 94.6465696466% false alarm rate, 0.105014439485% miss rate
+
+
+Started on 2018-02-16 18:05
+Finished on 2018-02-16 18:05
+Execution time 0:00:04.613599
+
+best found feature subset / model parameters for 4-folded CV with 3 gamma values and 1 nu values:
+gamma                    : 0.5
+nu                       : 0.001
+feature subset           : ('packets', 'octets', 'protocol')
+grid search results      : 92.5935550936% false alarm rate, 0.124704646889% miss rate
+
+

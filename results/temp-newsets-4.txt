@@ -1,0 +1,22 @@
+[[ 0. nan nan nan nan]
+ [ 0. nan nan nan nan]
+ [ 0. nan nan nan nan]
+ ...
+ [ 0. nan nan nan nan]
+ [ 0. nan nan nan nan]
+ [ 0. nan nan nan nan]]
+[[ 0. nan nan nan nan]
+ [ 0. nan nan nan nan]
+ [ 0. nan nan nan nan]
+ ...
+ [ 0. nan nan nan nan]
+ [ 0. nan nan nan nan]
+ [ 0. nan nan nan nan]]
+indices for train
+indices for train
+indices for train
+indices for train
+indices for train
+indices for train
+indices for train
+indices for train

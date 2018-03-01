@@ -1,0 +1,110 @@
+Started on 2018-02-19 17:47
+Finished on 2018-02-19 17:47
+Execution time 0:00:43.518498
+
+best found feature subset / model parameters for 5-folded CV with 2 gamma values and 1 nu values:
+gamma                    : 0.3
+nu                       : 0.001
+feature subset           : ('packets', 'octets', 'duration', 'srcport', 'dstport', 'tcpflags', 'protocol')
+grid search results      : 84.9474789916% false alarm rate, 0.458106619011% miss rate
+
+
+Started on 2018-02-19 17:55
+Finished on 2018-02-19 17:56
+Execution time 0:00:43.133935
+
+best found feature subset / model parameters for 5-folded CV with 2 gamma values and 1 nu values:
+gamma                    : 0.3
+nu                       : 0.001
+feature subset           : ('packets', 'octets', 'duration', 'srcport', 'dstport', 'tcpflags', 'protocol')
+grid search results      : 84.9474789916% false alarm rate, 0.458106619011% miss rate
+
+
+Started on 2018-02-19 18:00
+Finished on 2018-02-19 18:00
+Execution time 0:00:42.920940
+
+best found feature subset / model parameters for 5-folded CV with 2 gamma values and 1 nu values:
+gamma                    : 0.3
+nu                       : 0.001
+feature subset           : ('packets', 'octets', 'duration', 'srcport', 'dstport', 'tcpflags', 'protocol')
+grid search results      : 84.9474789916% false alarm rate, 0.458106619011% miss rate
+
+
+Started on 2018-02-20 16:10
+Finished on 2018-02-20 16:11
+Execution time 0:00:55.487107
+
+best found feature subset / model parameters for 5-folded CV with 2 gamma values and 1 nu values:
+gamma                    : 0.3
+nu                       : 0.001
+feature subset           : ('protocol',)
+grid search results      : 0.0% false alarm rate, 100.0% miss rate
+
+
+Started on 2018-02-20 16:14
+Finished on 2018-02-20 16:15
+Execution time 0:00:51.779740
+
+best found feature subset / model parameters for 5-folded CV with 2 gamma values and 1 nu values:
+gamma                    : 0.3
+nu                       : 0.001
+feature subset           : ('protocol',)
+grid search results      : 0.0% false alarm rate, 100.0% miss rate
+
+
+Started on 2018-02-20 16:16
+Finished on 2018-02-20 16:17
+Execution time 0:00:51.798732
+
+best found feature subset / model parameters for 5-folded CV with 2 gamma values and 1 nu values:
+gamma                    : 0.3
+nu                       : 0.001
+feature subset           : ('protocol',)
+grid search results      : 0.0% false alarm rate, 100.0% miss rate
+
+
+Started on 2018-02-20 16:23
+Finished on 2018-02-20 16:24
+Execution time 0:00:50.440919
+
+best found feature subset / model parameters for 5-folded CV with 2 gamma values and 1 nu values:
+gamma                    : 0.3
+nu                       : 0.001
+feature subset           : ('protocol',)
+grid search results      : 0.0% false alarm rate, 100.0% miss rate
+
+
+Started on 2018-02-20 16:27
+Finished on 2018-02-20 16:28
+Execution time 0:00:50.294705
+
+best found feature subset / model parameters for 5-folded CV with 2 gamma values and 1 nu values:
+gamma                    : 0.3
+nu                       : 0.001
+feature subset           : ('protocol',)
+grid search results      : 0.0% false alarm rate, 100.0% miss rate
+
+
+Started on 2018-02-20 16:32
+Finished on 2018-02-20 16:33
+Execution time 0:00:50.616275
+
+best found feature subset / model parameters for 5-folded CV with 2 gamma values and 1 nu values:
+gamma                    : 0.3
+nu                       : 0.001
+feature subset           : ('protocol',)
+grid search results      : 0.0% false alarm rate, 100.0% miss rate
+
+
+Started on 2018-02-20 16:39
+Finished on 2018-02-20 16:40
+Execution time 0:00:50.545565
+
+best found feature subset / model parameters for 5-folded CV with 2 gamma values and 1 nu values:
+gamma                    : 0.3
+nu                       : 0.001
+feature subset           : ('protocol',)
+grid search results      : 0.0% false alarm rate, 100.0% miss rate
+
+

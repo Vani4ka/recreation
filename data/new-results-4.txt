@@ -1,0 +1,11 @@
+Started on 2018-02-16 16:11
+Finished on 2018-02-16 16:19
+Execution time 0:07:59.871387
+
+best found feature subset / model parameters for 4-folded CV with 3 gamma values and 1 nu values:
+gamma                    : 0.5
+nu                       : 0.201
+feature subset           : ('duration', 'tcpflags')
+grid search results      : 0.0% false alarm rate, 20.0249409294% miss rate
+
+
