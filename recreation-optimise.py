@@ -3,7 +3,6 @@ from numpy import genfromtxt
 import features as f
 import functions as func
 import sys
-import re
 import datetime
 import math
 
@@ -36,10 +35,10 @@ def findBestErrorRateM( d ):
     def fPos( p ): return p[0][0]
     def fNeg( p ): return p[0][1]
     for pair in d.iteritems():
-        # new lowest FAR found
+        # new lowest MR found
         if fNeg(pair) < fNeg(lowest):
             lowest = pair
-        # equal FAR - take a look at MR
+        # equal MR - take a look at FAR
         elif fNeg(pair) == fNeg(lowest):
             if fPos(pair) < fPos(lowest):
                 lowest = pair
@@ -57,24 +56,7 @@ def compute(tpl):
     errorRate = func.calcErrorRate(func.run(ocsvm, config["folds"], trS, teS))
     tmpResults[errorRate] = (g, n, lookUp[subsetCnt])
     print str(format(errorRate[0], '.20f')) + " " + str(format(errorRate[1], '.20f')) + " : gamma= " + str(g) + " nu= " + str(n) + " features= " + str(lookUp[subsetCnt])
-    # applying the stopping rule
-    if counter == rejected:
-        threshold = findBestErrorRate(results)
-        print 'threshold ' + str(threshold)
-    if counter > rejected:
-        if (threshold[0][0] > errorRate[0]) or (threshold[0][0] == errorRate[0] and threshold[0][1] > errorRate[1]):
-            orig_stdout = sys.stdout
-            t = open('results/stopping-rule-result-' + str(config["folds"]) + '.txt', 'a+')
-            sys.stdout = t
-            print "\nStarted on " + started.strftime("%Y-%m-%d %H:%M")
-            print "Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n"
-            print "Best result according to the stopping rule:"
-            print str(format(errorRate[0], '.20f')) + " " + str(format(errorRate[1], '.20f')) + " : gamma= " + str(
-                g) + " nu= " + str(n) + " features= " + str(lookUp[subsetCnt])
-            print "------------------------------------------------------------"
-            sys.stdout = orig_stdout
-            t.close()
-            sys.exit("Found")
+
 
 def createCombos():
     """Creates all combinations of gamma and nu values"""
@@ -85,6 +67,7 @@ def createCombos():
             combos.append((gamma, nu))
     return combos
 
+
 def printResults( resultList ):
     """Determines the best results of the given lists and prints them well
     readable."""
@@ -94,12 +77,12 @@ def printResults( resultList ):
 
     # for MR
     # best = findBestErrorRateM(resultList)
-    print "best found feature subset / model parameters for " + str(config["folds"]) + "-folded CV with " + str(len(gammaVal)) + " gamma values and " + str(len(nuVal)) + " nu values:"
+    print "Best found feature subset / model parameters for " + str(config["folds"]) + "-folded CV with " + str(len(gammaVal)) + " gamma values and " + str(len(nuVal)) + " nu values:"
     print "gamma                    : %s" % str(best[1][0])
     print "nu                       : %s" % str(best[1][1])
     print "feature subset           : %s" % str(best[1][2])
     print "grid search results      : %s%% false alarm rate, %s%% miss rate" % (str(best[0][0]*100), str(best[0][1]*100))
-    print "\n"
+    print "------------------------------------------------------------"
 
 
 results = {}
@@ -125,15 +108,7 @@ if __name__ == '__main__':
 
     subsetCnt = 0
     numFeatures = f.getFeatureAmount(config["trainingSet"])
-    # lookUp = f.calculateSubsets()
-
-    # If using the secretary problem:
-    shuffled = f.shuffling(malicious, benign)
-    lookUp = shuffled[0]
-    # and instead of for trS, teS in f.possibleFeatureSubsets(malicious, benign):
-    # use for trS, teS in shuffled[1]:
-    counter = 0
-    threshold = 0.0
+    lookUp = f.calculateSubsets()
 
     # stopping rule
     # calculate number of candidates
@@ -143,33 +118,28 @@ if __name__ == '__main__':
 
     combinations = createCombos()
 
-    for trS, teS in shuffled[1]:
-    # for trS, teS in f.possibleFeatureSubsets(malicious, benign):
+    # writing temporary results to a file
+    orig_stdout = sys.stdout
+    temp = open('results/stopping-rule-comparison/temp-' + str(config["folds"]) + '.txt', 'a+')
+    temp.write("Started on " + started.strftime("%Y-%m-%d %H:%M") + "\n")
+    temp.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n\n")
+    sys.stdout = temp
+
+    for trS, teS in f.possibleFeatureSubsets(malicious, benign):
         print "starting model selection with feature subset " + str(subsetCnt + 1) + " of " + str(2**numFeatures -1)
 
         tmpResults = {}
-        orig_stdout = sys.stdout
-        temp = open('results/temp-' + str(config["folds"]) + '.txt', 'a+')
-        sys.stdout = temp
 
         map(compute, combinations)
 
         results.update(tmpResults)
         subsetCnt += 1
 
-        # here the stopping rule should be applied:
-        # when a counter reaches the number determined by the stopping rule (e.g. n/e)
-        # findBestErrorRate(results) or printResults(results) should find the best rejected candidate according
-        # to FAR or MR and take its FAR and MR values as the stopping criteria
-        # when the there is an tmpResults value better than our stopping criteria
-        # break and output this tmpResults as the best result
-
     sys.stdout = orig_stdout
     temp.close()
 
     #writing the final result to a file
-    orig_stdout = sys.stdout
-    f = open('results/res-' + str(config["folds"]) + '.txt', 'a+')
+    f = open('results/stopping-rule-comparison/results-' + str(config["folds"]) + '.txt', 'a+')
     sys.stdout = f
 
     print "Started on " + started.strftime("%Y-%m-%d %H:%M")
@@ -179,12 +149,3 @@ if __name__ == '__main__':
 
     sys.stdout = orig_stdout
     f.close()
-
-    # clean the temp file
-    s = open('results/temp-' + str(config["folds"]) + '.txt').read()
-    s = re.sub(r"\Wopen file '<stderr>', mode 'w' at [a-z, A-Z, 0-9]+\W ", "", s)
-    t = open('results/temp-' + str(config["folds"]) + '.txt', 'w')
-    t.write("Started on " + started.strftime("%Y-%m-%d %H:%M") + "\n")
-    t.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n\n")
-    t.write(s)
-    t.close()

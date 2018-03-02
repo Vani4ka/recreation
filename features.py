@@ -62,7 +62,6 @@ def getFeatureAmount( fileName ):
 	f = open(fileName)
 	line = f.readline()
 	f.close()
-	# changed because the data format has been changed
 	return len(line.strip().split())
 
 # addition for the secretary problem
