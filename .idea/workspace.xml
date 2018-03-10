@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6bfc5bbe-90e2-448f-a9b2-bbf09c266209" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/clean-dataset.py" afterPath="$PROJECT_DIR$/clean-dataset.py" />
-      <change beforePath="$PROJECT_DIR$/data/new-datasets/benign-dataset_scaled.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/data/new-datasets/malicious-dataset_scaled.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/features.py" afterPath="$PROJECT_DIR$/features.py" />
-      <change beforePath="$PROJECT_DIR$/old-datasets/README.txt" afterPath="$PROJECT_DIR$/data/old-datasets/README.txt" />
-      <change beforePath="$PROJECT_DIR$/old-datasets/benign-dataset_scaled.txt" afterPath="$PROJECT_DIR$/data/old-datasets/benign-dataset_scaled.txt" />
-      <change beforePath="$PROJECT_DIR$/old-datasets/benign-subset.txt" afterPath="$PROJECT_DIR$/data/old-datasets/benign-subset.txt" />
-      <change beforePath="$PROJECT_DIR$/old-datasets/benign-testingset_scaled.txt" afterPath="$PROJECT_DIR$/data/old-datasets/benign-testingset_scaled.txt" />
-      <change beforePath="$PROJECT_DIR$/old-datasets/benign-validationset_scaled.txt" afterPath="$PROJECT_DIR$/data/old-datasets/benign-validationset_scaled.txt" />
-      <change beforePath="$PROJECT_DIR$/old-datasets/malicious-dataset_scaled.txt" afterPath="$PROJECT_DIR$/data/old-datasets/malicious-dataset_scaled.txt" />
-      <change beforePath="$PROJECT_DIR$/old-datasets/malicious-subset.txt" afterPath="$PROJECT_DIR$/data/old-datasets/malicious-subset.txt" />
-      <change beforePath="$PROJECT_DIR$/old-datasets/malicious-testingset_scaled.txt" afterPath="$PROJECT_DIR$/data/old-datasets/malicious-testingset_scaled.txt" />
-      <change beforePath="$PROJECT_DIR$/old-datasets/malicious-validationset_scaled.txt" afterPath="$PROJECT_DIR$/data/old-datasets/malicious-validationset_scaled.txt" />
-      <change beforePath="$PROJECT_DIR$/recreation-optimise-stopping.py" afterPath="$PROJECT_DIR$/recreation-optimise-stopping.py" />
-      <change beforePath="$PROJECT_DIR$/recreation-optimise.py" afterPath="$PROJECT_DIR$/recreation-optimise.py" />
-      <change beforePath="$PROJECT_DIR$/results/res-8.txt" afterPath="$PROJECT_DIR$/data/old-results/res-8.txt" />
-      <change beforePath="$PROJECT_DIR$/results/temp-8.txt" afterPath="$PROJECT_DIR$/data/old-results/temp-8.txt" />
-      <change beforePath="$PROJECT_DIR$/results/temp-newsets-4.txt" afterPath="$PROJECT_DIR$/data/old-results/temp-newsets-4.txt" />
-      <change beforePath="$PROJECT_DIR$/results/test/res-4.txt" afterPath="$PROJECT_DIR$/data/old-results/test/res-4.txt" />
-      <change beforePath="$PROJECT_DIR$/results/test/res-5.txt" afterPath="$PROJECT_DIR$/data/old-results/test/res-5.txt" />
-      <change beforePath="$PROJECT_DIR$/results/test/res-6.txt" afterPath="$PROJECT_DIR$/data/old-results/test/res-6.txt" />
-      <change beforePath="$PROJECT_DIR$/results/test/temp-4.txt" afterPath="$PROJECT_DIR$/data/old-results/test/temp-4.txt" />
-      <change beforePath="$PROJECT_DIR$/results/test/temp-5.txt" afterPath="$PROJECT_DIR$/data/old-results/test/temp-5.txt" />
-      <change beforePath="$PROJECT_DIR$/results/test/temp-6.txt" afterPath="$PROJECT_DIR$/data/old-results/test/temp-6.txt" />
-      <change beforePath="$PROJECT_DIR$/runmultiple.sh" afterPath="$PROJECT_DIR$/runmultiple.sh" />
-    </list>
+    <list default="true" id="6bfc5bbe-90e2-448f-a9b2-bbf09c266209" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -136,6 +110,12 @@
               <item name="recreation" type="b2602c69:ProjectViewProjectNode" />
               <item name="recreation" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="recreation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="recreation" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="right-results" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
