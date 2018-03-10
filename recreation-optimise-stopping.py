@@ -172,7 +172,6 @@ if __name__ == '__main__':
     orig_stdout = sys.stdout
     temp = open('results/stopping-rule-comparison/temp-' + str(config["folds"]) + '.txt', 'a+')
     temp.write("Started on " + started.strftime("%Y-%m-%d %H:%M") + "\n")
-    temp.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n\n")
     sys.stdout = temp
 
     for trS, teS in shuffled[1]:
@@ -184,6 +183,7 @@ if __name__ == '__main__':
         results.update(tmpResults)
         subsetCnt += 1
 
+    temp.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n\n")
     sys.stdout = orig_stdout
     temp.write("\n")
     temp.close()

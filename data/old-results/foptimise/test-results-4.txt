@@ -1,0 +1,10 @@
+Started on 2018-03-09 20:49
+Finished on 2018-03-09 20:49
+Execution time 0:00:06.320497
+
+Best found feature subset / model parameters for 4-folded CV with 2 gamma values and 3 nu values:
+gamma                    : 0.23
+nu                       : 0.03
+feature subset           : ('duration',)
+grid search results      : 0.0% false alarm rate, 6.28117616172% miss rate
+------------------------------------------------------------

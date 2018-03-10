@@ -1,0 +1,30 @@
+Started on 2018-03-04 16:48
+Finished on 2018-03-06 16:50
+Execution time 2 days, 0:02:11.305094
+
+Results for feature subset / model parameters for 8-folded CV with 7 gamma values and 5 nu values:
+
+Stopping rule threshold:
+gamma                    :0.1
+nu                       :0.201
+feature subset           :('packets', 'srcport', 'dstport', 'tcpflags')
+threshold      : 0.0% false alarm rate, 22.4940735639% miss rate
+
+Best result found:
+gamma                    :0.1
+nu                       :0.201
+feature subset           :('srcport', 'dstport', 'tcpflags', 'protocol')
+grid search results      : 0.0% false alarm rate, 22.4329397802% miss rate
+------------------------------------------------------------
+Started on 2018-03-07 16:25
+Finished on 2018-03-09 16:39
+Execution time 2 days, 0:13:44.499216
+
+Results for feature subset / model parameters for 8-folded CV with 7 gamma values and 5 nu values:
+
+Stopping rule threshold:
+gamma                    :0.1
+nu                       :0.201
+feature subset           :('srcport', 'dstport', 'tcpflags')
+threshold      : 0.0% false alarm rate, 22.4329397802% miss rate
+

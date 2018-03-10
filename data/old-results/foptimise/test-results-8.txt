@@ -1,0 +1,85 @@
+Started on 2018-03-09 20:57
+Finished on 2018-03-09 20:58
+Execution time 0:00:12.256894
+
+Best found feature subset / model parameters for 8-folded CV with 5 gamma values and 1 nu values:
+gamma                    : 0.28
+nu                       : 0.02
+feature subset           : ('srcport',)
+grid search results      : 0.0% false alarm rate, 4.73339384967% miss rate
+------------------------------------------------------------
+Started on 2018-03-09 21:01
+Finished on 2018-03-09 21:02
+Execution time 0:00:18.082013
+
+Best found feature subset / model parameters for 8-folded CV with 7 gamma values and 1 nu values:
+gamma                    : 0.28
+nu                       : 0.02
+feature subset           : ('tcpflags',)
+grid search results      : 0.0% false alarm rate, 4.73339384967% miss rate
+------------------------------------------------------------
+Started on 2018-03-09 21:04
+Finished on 2018-03-09 21:05
+Execution time 0:00:18.081241
+
+Best found feature subset / model parameters for 8-folded CV with 7 gamma values and 1 nu values:
+gamma                    : 0.28
+nu                       : 0.02
+feature subset           : ('tcpflags',)
+grid search results      : 0.0% false alarm rate, 4.73339384967% miss rate
+------------------------------------------------------------
+Started on 2018-03-09 21:05
+Finished on 2018-03-09 21:05
+Execution time 0:00:17.252270
+
+Best found feature subset / model parameters for 8-folded CV with 7 gamma values and 1 nu values:
+gamma                    : 0.28
+nu                       : 0.02
+feature subset           : ('tcpflags',)
+grid search results      : 0.0% false alarm rate, 4.73339384967% miss rate
+------------------------------------------------------------
+Started on 2018-03-09 21:05
+Finished on 2018-03-09 21:06
+Execution time 0:00:17.911409
+
+Best found feature subset / model parameters for 8-folded CV with 7 gamma values and 1 nu values:
+gamma                    : 0.28
+nu                       : 0.02
+feature subset           : ('tcpflags',)
+grid search results      : 0.0% false alarm rate, 4.73339384967% miss rate
+------------------------------------------------------------
+Started on 2018-03-09 21:06
+Finished on 2018-03-09 21:07
+Execution time 0:00:17.955234
+
+Best found feature subset / model parameters for 8-folded CV with 7 gamma values and 1 nu values:
+gamma                    : 0.28
+nu                       : 0.02
+feature subset           : ('tcpflags',)
+grid search results      : 0.0% false alarm rate, 4.73339384967% miss rate
+------------------------------------------------------------
+Started on 2018-03-09 21:31
+Finished on 2018-03-09 21:32
+Execution time 0:00:18.518498
+
+Best found feature subset / model parameters for 8-folded CV with 7 gamma values and 1 nu values:
+gamma                    : 0.28
+nu                       : 0.02
+Started on 2018-03-09 21:33
+Finished on 2018-03-09 21:33
+Execution time 0:00:19.307894
+
+Best found feature subset / model parameters for 8-folded CV with 7 gamma values and 1 nu values:
+gamma                    : 0.28
+nu                       : 0.02
+grid search results      : 0.0% false alarm rate, 4.73339384967% miss rate
+------------------------------------------------------------
+Started on 2018-03-09 21:36
+Finished on 2018-03-09 21:37
+Execution time 0:00:30.096098
+
+Best found feature subset / model parameters for 8-folded CV with 11 gamma values and 1 nu values:
+gamma                    : 0.28
+nu                       : 0.02
+grid search results      : 0.0% false alarm rate, 4.73339384967% miss rate
+------------------------------------------------------------

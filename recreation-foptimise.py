@@ -7,14 +7,19 @@ import datetime
 import math
 
 
-def findBestErrorRate( d ):
+def findBestErrorRate(d):
     """Determines the best error rates by first selecting the lowest false
     alarm rate and then selecting the lowest miss rate if there are several
     pairs with an equal FAR."""
 
-    lowest = ((1,1),(1,1))
-    def fPos( p ): return p[0][0]
-    def fNeg( p ): return p[0][1]
+    lowest = ((1, 1), (1, 1))
+
+    def fPos(p):
+        return p[0][0]
+
+    def fNeg(p):
+        return p[0][1]
+
     for pair in d.iteritems():
         # new lowest FAR found
         if fPos(pair) < fPos(lowest):
@@ -26,14 +31,19 @@ def findBestErrorRate( d ):
     return lowest
 
 
-def findBestErrorRateM( d ):
+def findBestErrorRateM(d):
     """Determines the best error rates by first selecting the lowest false
     alarm rate and then selecting the lowest miss rate if there are several
     pairs with an equal FAR."""
 
-    lowest = ((1,1),(1,1))
-    def fPos( p ): return p[0][0]
-    def fNeg( p ): return p[0][1]
+    lowest = ((1, 1), (1, 1))
+
+    def fPos(p):
+        return p[0][0]
+
+    def fNeg(p):
+        return p[0][1]
+
     for pair in d.iteritems():
         # new lowest MR found
         if fNeg(pair) < fNeg(lowest):
@@ -53,22 +63,23 @@ def compute(tpl):
     n = tpl[1]
 
     ocsvm = svm.OneClassSVM(nu=n, kernel="rbf", gamma=g, cache_size=1000)
-    errorRate = func.calcErrorRate(func.run(ocsvm, config["folds"], trS, teS))
-    tmpResults[errorRate] = (g, n, lookUp[subsetCnt])
-    print str(format(errorRate[0], '.20f')) + " " + str(format(errorRate[1], '.20f')) + " : gamma= " + str(g) + " nu= " + str(n) + " features= " + str(lookUp[subsetCnt])
+    errorRate = func.calcErrorRate(func.run(ocsvm, config["folds"], malicious, benign))
+    tmpResults[errorRate] = (g, n)
+    print str(format(errorRate[0], '.20f')) + " " + str(format(errorRate[1], '.20f')) + " : gamma= " + str(
+        g) + " nu= " + str(n)
 
 
 def createCombos():
     """Creates all combinations of gamma and nu values"""
 
-    combos =[]
+    combos = []
     for gamma in gammaVal:
         for nu in nuVal:
             combos.append((gamma, nu))
     return combos
 
 
-def printResults( resultList ):
+def printResults(resultList):
     """Determines the best results of the given lists and prints them well
     readable."""
 
@@ -77,19 +88,20 @@ def printResults( resultList ):
 
     # for MR
     # best = findBestErrorRateM(resultList)
-    print "Best found feature subset / model parameters for " + str(config["folds"]) + "-folded CV with " + str(len(gammaVal)) + " gamma values and " + str(len(nuVal)) + " nu values:"
+    print "Best found feature subset / model parameters for " + str(config["folds"]) + "-folded CV with " + str(
+        len(gammaVal)) + " gamma values and " + str(len(nuVal)) + " nu values:"
     print "gamma                    : %s" % str(best[1][0])
     print "nu                       : %s" % str(best[1][1])
-    print "feature subset           : %s" % str(best[1][2])
-    print "grid search results      : %s%% false alarm rate, %s%% miss rate" % (str(best[0][0]*100), str(best[0][1]*100))
+    print "grid search results      : %s%% false alarm rate, %s%% miss rate" % (
+    str(best[0][0] * 100), str(best[0][1] * 100))
     print "------------------------------------------------------------"
 
 
 results = {}
 config = {
-    "folds":8,
-    "trainingSet":"new-datasets/malicious-dataset_scaled.txt",
-    "testingSet":"new-datasets/benign-dataset_scaled.txt",
+    "folds": 8,
+    "trainingSet": "new-datasets/malicious-testingset-new.txt",
+    "testingSet": "new-datasets/benign-testingset-new.txt",
 }
 
 if __name__ == '__main__':
@@ -97,9 +109,15 @@ if __name__ == '__main__':
     started = datetime.datetime.now()
 
     # arrays with gamma and nu values
-    gammaVal = [0.1, 0.3, 0.5, 1.0, 2.0, 5.0, 10.0]
-    nuVal = [0.001, 0.201, 0.401, 0.601, 0.801]
-
+    gammaVal = [0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29]
+    nuVal = [0.02]
+    # gammaVal = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1,
+    #             0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2,
+    #             0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29]
+    # nuVal = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1,
+    #          0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2,
+    #          0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29, 0.3,
+    #          0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39]
 
     # training data
     malicious = genfromtxt(config["trainingSet"], delimiter='\t')
@@ -108,37 +126,31 @@ if __name__ == '__main__':
 
     subsetCnt = 0
     numFeatures = f.getFeatureAmount(config["trainingSet"])
-    lookUp = f.calculateSubsets()
-
-    # # stopping rule
-    # # calculate number of candidates
-    # candidates = len(gammaVal) * len(nuVal) * len(lookUp)
-    # # calculate the number of candidates to be rejected
-    # rejected = int(candidates/math.exp(1))
+    # lookUp = f.calculateSubsets()
 
     combinations = createCombos()
 
     # writing temporary results to a file
     orig_stdout = sys.stdout
-    temp = open('results/stopping-rule-comparison/full-temp-' + str(config["folds"]) + '.txt', 'a+')
+    temp = open('results/foptimise/testingset-test-temp-' + str(config["folds"]) + '.txt', 'a+')
     temp.write("Started on " + started.strftime("%Y-%m-%d %H:%M") + "\n")
     sys.stdout = temp
 
-    for trS, teS in f.possibleFeatureSubsets(malicious, benign):
-        print "starting model selection with feature subset " + str(subsetCnt + 1) + " of " + str(2**numFeatures -1)
+    for c in combinations:
 
         tmpResults = {}
 
-        map(compute, combinations)
+        compute(c)
 
         results.update(tmpResults)
         subsetCnt += 1
+
     temp.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n\n")
     sys.stdout = orig_stdout
     temp.close()
 
-    #writing the final result to a file
-    f = open('results/stopping-rule-comparison/full-results-' + str(config["folds"]) + '.txt', 'a+')
+    # writing the final result to a file
+    f = open('results/foptimise/testingset-test-results-' + str(config["folds"]) + '.txt', 'a+')
     sys.stdout = f
 
     print "Started on " + started.strftime("%Y-%m-%d %H:%M")

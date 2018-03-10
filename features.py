@@ -72,5 +72,4 @@ def shuffling(trainingSet, testingSet):
 	combined = list(zip(lU, sP))
 	random.shuffle(combined)
 	lU[:], sP[:] = zip(*combined)
-	print type((lU, sP))
 	return lU, sP

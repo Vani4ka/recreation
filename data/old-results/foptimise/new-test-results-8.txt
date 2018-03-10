@@ -1,0 +1,9 @@
+Started on 2018-03-09 21:54
+Finished on 2018-03-09 21:55
+Execution time 0:01:03.819993
+
+Best found feature subset / model parameters for 8-folded CV with 11 gamma values and 1 nu values:
+gamma                    : 0.29
+nu                       : 0.02
+grid search results      : 0.236344537815% false alarm rate, 4.99123898289% miss rate
+------------------------------------------------------------
