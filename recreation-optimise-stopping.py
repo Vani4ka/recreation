@@ -61,11 +61,8 @@ def compute(tpl):
 
     if counter == rejected:
         threshold = findBestErrorRate(results)
-        t = open('results/stopping-rule-comparison/results-' + str(config["folds"]) + '.txt', 'a+')
+        t = open('data/results/stopping-rule/result-' + str(config["folds"]) + '.txt', 'a+')
         sys.stdout = t
-        print "Started on " + started.strftime("%Y-%m-%d %H:%M")
-        print "Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-        print "Execution time " + str(datetime.datetime.now() - started) + "\n"
         print "Results for feature subset / model parameters for " + str(config["folds"]) + "-folded CV with " + str(
             len(gammaVal)) + \
               " gamma values and " + str(len(nuVal)) + " nu values:\n"
@@ -79,7 +76,7 @@ def compute(tpl):
         t.close()
 
     elif counter > rejected:
-        t = open('results/stopping-rule-comparison/results-' + str(config["folds"]) + '.txt', 'a+')
+        t = open('data/results/stopping-rule/result-' + str(config["folds"]) + '.txt', 'a+')
         sys.stdout = t
         if (threshold[0][0] > errorRate[0]) or (threshold[0][0] == errorRate[0] and threshold[0][1] > errorRate[1]):
 
@@ -89,7 +86,14 @@ def compute(tpl):
             print "feature subset           :" + str(lookUp[subsetCnt])
             print "grid search results      : %s%% false alarm rate, %s%% miss rate" % (
                 str(errorRate[0] * 100), str(errorRate[1] * 100))
+            print "\n"
+            print "Started on " + started.strftime("%Y-%m-%d %H:%M")
+            print "Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+            print "Execution time " + str(datetime.datetime.now() - started)
             print "------------------------------------------------------------"
+            temp.write("\n" + "Started on " + started.strftime("%Y-%m-%d %H:%M") + "\n")
+            temp.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n")
+            temp.write("------------------------------------------------------------\n")
             sys.exit("Stopping rule")
         elif counter == candidates:
             print "Best result found (not better than the threshold):"
@@ -98,6 +102,10 @@ def compute(tpl):
             print "feature subset           :" + str(lookUp[subsetCnt])
             print "grid search results      : %s%% false alarm rate, %s%% miss rate" % (
                 str(errorRate[0] * 100), str(errorRate[1] * 100))
+            print "\n"
+            print "Started on " + started.strftime("%Y-%m-%d %H:%M")
+            print "Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+            print "Execution time " + str(datetime.datetime.now() - started)
             print "------------------------------------------------------------"
         sys.stdout = temp
         t.close()
@@ -135,8 +143,8 @@ def printResults(resultList):
 results = {}
 config = {
     "folds":8,
-    "trainingSet":"new-datasets/malicious-dataset_scaled.txt",
-    "testingSet":"new-datasets/benign-dataset_scaled.txt",
+    "trainingSet":"data/new-datasets/original/opt/malicious-validationset_scaled.txt",
+    "testingSet":"data/new-datasets/original/opt/benign-validationset_scaled.txt",
 }
 
 
@@ -170,8 +178,7 @@ if __name__ == '__main__':
     rejected = int(candidates / math.exp(1))
 
     orig_stdout = sys.stdout
-    temp = open('results/stopping-rule-comparison/temp-' + str(config["folds"]) + '.txt', 'a+')
-    temp.write("Started on " + started.strftime("%Y-%m-%d %H:%M") + "\n")
+    temp = open('data/results/stopping-rule/temp-' + str(config["folds"]) + '.txt', 'a+')
     sys.stdout = temp
 
     for trS, teS in shuffled[1]:
@@ -183,7 +190,9 @@ if __name__ == '__main__':
         results.update(tmpResults)
         subsetCnt += 1
 
-    temp.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n\n")
+    temp.write("\n" + "Started on " + started.strftime("%Y-%m-%d %H:%M") + "\n")
+    temp.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n")
+    temp.write("------------------------------------------------------------\n")
     sys.stdout = orig_stdout
     temp.write("\n")
     temp.close()

@@ -88,8 +88,8 @@ def printResults( resultList ):
 results = {}
 config = {
     "folds":8,
-    "trainingSet":"new-datasets/malicious-dataset_scaled.txt",
-    "testingSet":"new-datasets/benign-dataset_scaled.txt",
+    "trainingSet":"data/new-datasets/original/opt/malicious-validationset_scaled.txt",
+    "testingSet":"data/new-datasets/original/opt/benign-validationset_scaled.txt",
 }
 
 if __name__ == '__main__':
@@ -110,18 +110,11 @@ if __name__ == '__main__':
     numFeatures = f.getFeatureAmount(config["trainingSet"])
     lookUp = f.calculateSubsets()
 
-    # # stopping rule
-    # # calculate number of candidates
-    # candidates = len(gammaVal) * len(nuVal) * len(lookUp)
-    # # calculate the number of candidates to be rejected
-    # rejected = int(candidates/math.exp(1))
-
     combinations = createCombos()
 
     # writing temporary results to a file
     orig_stdout = sys.stdout
-    temp = open('results/stopping-rule-comparison/full-temp-' + str(config["folds"]) + '.txt', 'a+')
-    temp.write("Started on " + started.strftime("%Y-%m-%d %H:%M") + "\n")
+    temp = open('data/results/optimisations/temp-' + str(config["folds"]) + '.txt', 'a+')
     sys.stdout = temp
 
     for trS, teS in f.possibleFeatureSubsets(malicious, benign):
@@ -133,12 +126,15 @@ if __name__ == '__main__':
 
         results.update(tmpResults)
         subsetCnt += 1
-    temp.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n\n")
+    temp.write("\n" + "Started on " + started.strftime("%Y-%m-%d %H:%M") + "\n")
+    temp.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n")
+    temp.write("------------------------------------------------------------\n")
+
     sys.stdout = orig_stdout
     temp.close()
 
     #writing the final result to a file
-    f = open('results/stopping-rule-comparison/full-results-' + str(config["folds"]) + '.txt', 'a+')
+    f = open('data/results/optimisations/results-' + str(config["folds"]) + '.txt', 'a+')
     sys.stdout = f
 
     print "Started on " + started.strftime("%Y-%m-%d %H:%M")
