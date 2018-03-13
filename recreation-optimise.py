@@ -4,7 +4,6 @@ import features as f
 import functions as func
 import sys
 import datetime
-import math
 
 
 def findBestErrorRate( d ):

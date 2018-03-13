@@ -1,8 +1,5 @@
 import re
 
-import time
-
-
 def clean(line):
     line = line.strip()
     line = re.sub('([1-9]):', '', line)

@@ -1,8 +1,6 @@
 import re
 import time
-#
-# "packets", "octets", "duration", "srcport",
-# 		"dstport", "tcpflags", "protocol"
+
 
 def clean(line):
     line = line.strip("\t")
