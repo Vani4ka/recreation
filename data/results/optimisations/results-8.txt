@@ -1,0 +1,10 @@
+Started on 2018-03-11 15:09
+Finished on 2018-03-13 13:51
+Execution time 1 day, 22:41:50.080155
+
+Best found feature subset / model parameters for 8-folded CV with 7 gamma values and 5 nu values:
+gamma                    : 0.1
+nu                       : 0.201
+feature subset           : ('srcport', 'dstport', 'tcpflags', 'protocol')
+grid search results      : 0.0% false alarm rate, 22.5488024934% miss rate
+------------------------------------------------------------

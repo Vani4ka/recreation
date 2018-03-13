@@ -100,8 +100,8 @@ def printResults(resultList):
 results = {}
 config = {
     "folds": 8,
-    "trainingSet": "new-datasets/malicious-testingset-new.txt",
-    "testingSet": "new-datasets/benign-testingset-new.txt",
+    "trainingSet": "data/new-datasets/original/fopt/malicious-subset.txt",
+    "testingSet": "data/new-datasets/original/fopt/benign-subset.txt",
 }
 
 if __name__ == '__main__':
@@ -109,15 +109,13 @@ if __name__ == '__main__':
     started = datetime.datetime.now()
 
     # arrays with gamma and nu values
-    gammaVal = [0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29]
-    nuVal = [0.02]
-    # gammaVal = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1,
-    #             0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2,
-    #             0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29]
-    # nuVal = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1,
-    #          0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2,
-    #          0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29, 0.3,
-    #          0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39]
+    gammaVal = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1,
+                0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2,
+                0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29]
+    nuVal = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1,
+             0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2,
+             0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29, 0.3,
+             0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39]
 
     # training data
     malicious = genfromtxt(config["trainingSet"], delimiter='\t')
@@ -132,7 +130,7 @@ if __name__ == '__main__':
 
     # writing temporary results to a file
     orig_stdout = sys.stdout
-    temp = open('results/foptimise/testingset-test-temp-' + str(config["folds"]) + '.txt', 'a+')
+    temp = open('data/results/optimisations/fopt-temp-' + str(config["folds"]) + '.txt', 'a+')
     temp.write("Started on " + started.strftime("%Y-%m-%d %H:%M") + "\n")
     sys.stdout = temp
 
@@ -150,7 +148,7 @@ if __name__ == '__main__':
     temp.close()
 
     # writing the final result to a file
-    f = open('results/foptimise/testingset-test-results-' + str(config["folds"]) + '.txt', 'a+')
+    f = open('data/results/optimisations/fopt-results-' + str(config["folds"]) + '.txt', 'a+')
     sys.stdout = f
 
     print "Started on " + started.strftime("%Y-%m-%d %H:%M")
