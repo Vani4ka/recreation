@@ -122,9 +122,7 @@ if __name__ == '__main__':
     # benign data
     benign = genfromtxt(config["testingSet"], delimiter='\t')
 
-    subsetCnt = 0
     numFeatures = f.getFeatureAmount(config["trainingSet"])
-    # lookUp = f.calculateSubsets()
 
     combinations = createCombos()
 
@@ -141,7 +139,6 @@ if __name__ == '__main__':
         compute(c)
 
         results.update(tmpResults)
-        subsetCnt += 1
 
     temp.write("Finished on " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") + "\n\n")
     sys.stdout = orig_stdout
