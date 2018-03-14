@@ -5,11 +5,18 @@ def parseLine(line):
     result = ResultEntry()
     if not line.strip():
         pass
+    # for optimisation
+    # else:
+    #     if "features" in line:
+    #         mains = line.split("features= ")
+    #         splits = mains[0].split()
+    #         result = ResultEntry(float(splits[0]), float(splits[1]), mains[1])
+
+    #for foptimisation
     else:
-        if "features" in line:
-            mains = line.split("features= ")
-            splits = mains[0].split()
-            result = ResultEntry(float(splits[0]), float(splits[1]), mains[1])
+        if "gamma" in line:
+            splits = line.split()
+            result = ResultEntry(float(splits[0]), float(splits[1]), [])
     return result
 
 def findBestFAR(result, best):
@@ -33,7 +40,7 @@ def findBestMR(result, best):
 
 
 
-data = open("/home/vanya/Bachelor Thesis/code/recreation/data/results/optimisations/temp-8.txt", "r").readlines()
+data = open("data/results/optimisations/fopt-temp-8.txt", "r").readlines()
 data = map(lambda l: parseLine(l), data)
 bestFAR = ResultEntry()
 bestMR = ResultEntry()
@@ -41,9 +48,17 @@ for i in range(len(data)):
     bestFAR = findBestFAR(data[i], bestFAR)
     bestMR = findBestMR(data[i], bestMR)
 
+#for optimisation
+# print "Best FAR:"
+# print str(bestFAR.far) + ", " + str(bestFAR.mr) + " with feature set: " + bestFAR.featureSet + "\n"
+# print "Best MR:"
+# print str(bestMR.far) + ", " + str(bestMR.mr) + " with feature set: " + bestMR.featureSet
+
+#for foptimisation
 print "Best FAR:"
-print str(bestFAR.far) + ", " + str(bestFAR.mr) + " with feature set: " + bestFAR.featureSet + "\n"
+print str(bestFAR.far) + ", " + str(bestFAR.mr)
 print "Best MR:"
-print str(bestMR.far) + ", " + str(bestMR.mr) + " with feature set: " + bestMR.featureSet
+print str(bestMR.far) + ", " + str(bestMR.mr)
+
 
 
